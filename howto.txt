@@ -1,0 +1,59 @@
+conda create -n genome
+conda activate genome
+conda install -c conda-forge pymatgen
+conda install -c psi4 -c conda-forge psi4
+
+###################### test
+#python
+#>>> import pymatgen.io.gaussian
+#>>> gau=pymatgen.io.gaussian.GaussianInput.from_file('1.com')
+#>>> gau.basis_set
+#'DEF2TZVP'
+#>>> gau.charge
+#-1
+#>>> gau.spin_multiplicity
+#1
+#>>> gau.functional
+#'PBEPBE'
+#
+#mol=pymatgen.core.Molecule(gau.molecule.species,gau.molecule.cart_coords)
+#import pymatgen.io.xyz
+#xyz=pymatgen.io.xyz.XYZ(mol)
+#xyz.write_file("gau.xyz")
+##########################
+#
+#def readXYZ(file):
+#    f = open(file, "r")
+#    lines = f.readlines()
+#    filelength = len(lines)
+#    progress = 0
+#    geomcount = 0
+#    geom = []
+#    while progress < filelength:
+#        tmpgeom = ""
+#        length = int(lines[progress])+2
+#        rangestart = progress
+#        rangeend = progress + length
+#        for i in range(rangestart, rangeend):
+#            tmpgeom = tmpgeom + lines[i]
+#        geom = geom + [tmpgeom]
+#        geomcount = geomcount + 1
+#        progress = progress + length
+#    f.close()
+#    return(''.join((geom)))
+#
+#
+#geom = readXYZ("gau.xyz")
+#psi4geom = psi4.geometry(geom)
+#psi4.set_memory('1024 MB')
+#psi4.set_options({'basis':gau.basis_set})
+#psi4.set_options({'pcm': 'true'})
+#psi4geom.set_molecular_charge(gau.charge)
+#psi4geom.set_multiplicity(gau.spin_multiplicity)
+#psi4.set_options({'basis': gau.basis_set,
+#                   'scf_type': 'pk',
+#                   'e_convergence': 1e-8,
+#                   'd_convergence': 1e-8})
+#e=psi4.energy('pbe')
+#print(e)
+#################################
